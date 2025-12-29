@@ -1,0 +1,105 @@
+<app-alert [alertType]="'success'" [alertMessage]="'Success'"></app-alert>
+<div class="container mt-4">
+    <app-tabs [tabList]="['List View', 'Form View']" (onTabChange)="onSelectTab($event)"></app-tabs>
+    <div class="row justify-content-center">
+        @if (selectedViewName === "List View") {
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">User Information</h5>
+                </div>
+                <div class="row">
+                    @for(item of userList$ | async; track $index){
+                    <div class="col-4">
+                        <div class="card-body" style="border: solid 1px;">
+                            <p><strong>User ID:</strong> {{ item.userId }}</p>
+                            <p><strong>Full Name:</strong> {{ item.fullName }}</p>
+                            <p><strong appHighlight>Email:</strong> {{ item.emailId }}</p>
+                            <p><strong appHighlight>Mobile No:</strong> {{ item.mobileNo }}</p>
+                            <p><strong appHighlight>Password:</strong> {{ item.password }}</p>
+                            <button class="btn btn-sm btn-success" (click)="onEditUser(item)">Edit</button>
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        } @else{
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">User Details</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="userForm">
+
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" formControlName="fullName" class="form-control"
+                                placeholder="Enter Full Name">
+                            @if(userForm.controls["fullName"].touched || userForm.controls["fullName"].dirty ||
+                            isFormSubmitted){
+                            <div class="text-danger">
+                                @if(userForm.controls["fullName"].errors?.["required"]){
+                                <span>This field is req</span>
+                                }
+                            </div>
+                            }
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email ID</label>
+                            <input type="email" formControlName="emailId" class="form-control"
+                                placeholder="Enter Email">
+                            @if(userForm.controls["emailId"].touched || userForm.controls["emailId"].dirty ||
+                            isFormSubmitted){
+                            <div class="text-danger">
+                                @if(userForm.controls["emailId"].errors?.["required"]){
+                                <span>This field is req</span>
+                                }
+                            </div>
+                            }
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" formControlName="password" class="form-control"
+                                placeholder="Enter Password">
+                            @if(userForm.controls["password"].touched || userForm.controls["password"].dirty ||
+                            isFormSubmitted){
+                            <div class="text-danger">
+                                @if(userForm.controls["password"].errors?.["required"]){
+                                <span>This field is req</span>
+                                }
+                            </div>
+                            }
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Mobile Number</label>
+                            <input type="text" formControlName="mobileNo" class="form-control"
+                                placeholder="Enter Mobile Number">
+                            @if(userForm.controls["mobileNo"].touched || userForm.controls["mobileNo"].dirty ||
+                            isFormSubmitted){
+                            <div class="text-danger">
+                                @if(userForm.controls["mobileNo"].errors?.["required"]){
+                                <span>This field is req</span>
+                                }
+                            </div>
+                            }
+                        </div>
+                        @if(userForm.controls["userId"].value === 0){
+                        <button class="btn btn-primary w-100" [disabled]="!userForm.valid"
+                            (click)="onSaveUser()">Save</button>
+                        }@else{
+                        <button class="btn btn-primary w-100" (click)="onSaveUser()">Update</button>
+                        }
+                        <button class="btn btn-primary w-100 mt-2" (click)="onReset()">Reset</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

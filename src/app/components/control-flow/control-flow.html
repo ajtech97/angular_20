@@ -1,0 +1,77 @@
+<div class="row mt-5">
+    <div class="col-3">
+        <select [(ngModel)]="selectedCast" class="form-select">
+            <option>ABC Cast</option>
+            <option>PQR Cast</option>
+            <option>LMN Cast</option>
+            <option>Other</option>
+        </select>
+    </div>
+    <div class="col-3">
+        @if(selectedCast === "Other"){
+        <input type="text" class="form-control" placeholder="Other value">
+        } @else if(selectedCast === "ABC Cast"){
+        <span>ABC Cast</span>
+        } @else if(selectedCast === "PQR Cast"){
+        <span>PQR Cast</span>
+        } @else if(selectedCast === "LMN Cast"){
+        <span>LMN Cast</span>
+        } @else{
+        <span>Select Cast</span>
+        }
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-4">
+        @if(isStudentActive()){
+        <span class="text-success">Student is Active</span>
+        } @else{
+        <span class="text-danger">Student is In-Active</span>
+        }
+    </div>
+    <div class="col-4">
+        <button class="btn btn-success" (click)="changeStatus(true)">Make Active</button>
+        <button class="btn btn-primary" (click)="changeStatus(false)">Make In-Active</button>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-3">
+        <ul>
+            @for(item of cityList; track $index){
+            <li> {{item}} </li>
+            }
+        </ul>
+    </div>
+    <div class="col-3">
+        @for(item of cityList; track $index){
+        <textarea [value]="item"></textarea>
+        }
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-4">
+        <table style="width: 100%;" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(item of studentList; track $index){
+                <tr>
+                    <td>{{$index + 1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.status ? "Active" : "In-Active"}}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

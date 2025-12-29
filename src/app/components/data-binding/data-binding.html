@@ -1,0 +1,93 @@
+<table style="width: 100%;">
+    <tr>
+        <td>
+            <span>{{courseName}}</span>
+        </td>
+        <td>
+            <input type="text" value="{{rollNumber}}">
+        <td>
+            {{currentDate}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" [value]="rollNumber" [(ngModel)]="rollNumber">
+        </td>
+        <td>
+            <input type="text" [minLength]="minLength" [value]="rollNumber">
+        </td>
+        <td>
+            <span [class]="className">Demo</span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {{rollNumber}}
+        </td>
+        <td>
+            <input type="checkbox" [(ngModel)]="isActive">
+        </td>
+    </tr>
+</table>
+<hr>
+<table>
+    <tr>
+        <td>
+            <button (click)="showAlert()">show alert</button>
+        </td>
+        <td>
+            <select (change)="cityChange()">
+                <option value="mumbai">Mumbai</option>
+                <option value="pune">Pune</option>
+                <option value="blr">Banglore</option>
+            </select>
+        </td>
+    </tr>
+</table>
+
+<div class="row">
+    <div class="col-3">
+        {{courseName | uppercase}}
+    </div>
+    <div class="col-3">
+        {{courseName | lowercase}}
+    </div>
+    <div class="col-3">
+        {{courseName | titlecase}}
+    </div>
+    <hr>
+    <div class="col-3">
+        {{rollNoList | slice:0:4}}
+    </div>
+    <div class="col-3">
+        {{rollNoList | slice:2}}
+    </div>
+    <div class="col-3">
+        {{className | slice:0:2}}
+    </div>
+    <div class="col-3">
+        {{currentDate | date}}
+        <br>
+        {{currentDate | date:"dd-MM-yy"}}
+        <br>
+        {{currentDate | date:"dd-MMMM-yyyy"}}
+        <br>
+        {{currentDate | date:"dd/MM/yyyy"}}
+    </div>
+    <div class="row">
+        <div class="col-3">
+            {{studentObj | json}}
+        </div>
+        <div class="col-3">
+            name: {{studentObj.name}}
+            <br>
+            city: {{studentObj.city | na}}
+            <br>
+            state: {{studentObj.state | na}}
+            <br>
+            pContact: {{studentObj.contact?.pContact}}
+            <br>
+            email: {{studentObj.contact?.email}}
+        </div>
+    </div>
+</div>

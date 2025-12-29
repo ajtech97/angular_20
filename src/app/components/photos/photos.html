@@ -1,0 +1,97 @@
+<app-alert [alertType]="'warning'" [alertMessage]="'Warning'"></app-alert>
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                Photos List
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Title</th>
+                            <th>Url</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(item of photosList; track $index){
+                        <tr>
+                            <td>{{$index + 1}}</td>
+                            <td>{{item.title}}</td>
+                            <td>{{item.url}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-success" (click)="onEditPhoto(item)">Edit</button>
+                                <button class="btn btn-sm btn-danger" (click)="onDeletePhoto(item.id)">Delete</button>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                Photos List
+            </div>
+            <div class="card-body">
+                <form #form="ngForm">
+                    <!-- --{{newPhoto.id}} -->
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Album Id</label>
+                            <input type="text" name="albumId" [(ngModel)]="newPhoto.albumId" class="form-control">
+                        </div>
+                        <div class="col-12">
+                            <label>Title</label>
+                            <input type="text" required minlength="5" name="title" #titleTem="ngModel"
+                                [(ngModel)]="newPhoto.title" class="form-control">
+                            <!-- --{{titleTem.errors | json}}-- -->
+                            @if(titleTem.touched || titleTem.dirty || isFormSubmitted){
+                            <div class="text-danger">
+                                @if(titleTem.errors?.["required"]){
+                                <span>This field is req</span>
+                                }
+                                @if(titleTem.errors?.["minlength"]){
+                                <span>Min 5 char req</span>
+                                }
+                            </div>
+                            }
+                        </div>
+                        <div class="col-12">
+                            <label>Url</label>
+                            <input type="text" required minlength="20" name="url" #urlTemp="ngModel"
+                                [(ngModel)]="newPhoto.url" class="form-control">
+                            @if(urlTemp.touched || urlTemp.dirty || isFormSubmitted){
+                            <div class="text-danger">
+                                @if(urlTemp.errors?.["required"]){
+                                <span>This field is req</span>
+                                }
+                                @if(urlTemp.errors?.["minlength"]){
+                                <span>Min 20 char req</span>
+                                }
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6 text-center">
+                            <button class="btn btn-secondary">Reset</button>
+                        </div>
+                        <div class="col-6 text-center">
+                            @if(newPhoto.id === 0){
+                            <button class="btn btn-success" [disabled]="!form.valid"
+                                (click)="onSavePhoto(form)">Save</button>
+                            }@else{
+                            <button class="btn btn-warning" (click)="onUpdatePhoto()">Update</button>
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

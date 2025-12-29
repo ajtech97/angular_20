@@ -1,0 +1,30 @@
+<div class="row mt-5">
+    <div class="col-4">
+        <table style="width: 100%;" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(item of studentList; track $index){
+                <tr>
+                    <td [ngStyle]="{color: textColor, 'font-size': '30px'}"
+                        [ngClass]="item.status ? 'bg-success' : 'bg-danger'">{{$index + 1}}</td>
+                    <td [class]="item.status ? 'bg-success' : 'bg-danger'">{{item.name}}</td>
+                    <td [ngClass]="item.status ? 'bg-success' : 'bg-danger'">{{item.city}}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-3" [ngStyle]="myCss">
+        Hiiiiiiiiii
+    </div>
+</div>
