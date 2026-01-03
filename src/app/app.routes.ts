@@ -7,6 +7,7 @@ import { Layout } from './components/layout/layout';
 import { Login } from './components/login/login/login';
 import { NotFound } from './components/not-found/not-found';
 import { Photos } from './components/photos/photos';
+import { SignalInDepth } from './components/signal-in-depth/signal-in-depth';
 import { Signal } from './components/signal/signal';
 import { Todo } from './components/todo/todo';
 import { User } from './components/user/user';
@@ -58,6 +59,11 @@ export const routes: Routes = [
             {
                 path: "todo",
                 component: Todo,
+                canActivate: [authGuard]
+            },
+            {
+                path: "signal-indepth",
+                component: SignalInDepth,
                 canActivate: [authGuard]
             },
         ]

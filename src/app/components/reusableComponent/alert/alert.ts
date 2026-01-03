@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, Input, OnInit, output } from '@angular/core';
 
 @Component({
   selector: 'app-alert',
@@ -9,9 +9,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class Alert implements OnInit {
 
-  @Input() alertType: string = ""
+  // @Input() alertType: string = ""
+
+  // Signal based input
+  alertType = input<string>("")
+
   @Input() alertMessage: string = ""
   @Input() className: string = ""
+
+  // Signal based output
+  onClose = output<string>()
 
   ngOnInit(): void {
     //   if (this.alertType === "success") {
@@ -20,5 +27,6 @@ export class Alert implements OnInit {
     //   if (this.alertType === "warning") {
     //     this.className = "alert-warning"
     //   }
+    this.onClose.emit("Alert Closed")
   }
 }

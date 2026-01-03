@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col-3">
+        <app-alert alertType="success" alertMessage="This is success alert" className="mb-2"></app-alert>
+        <app-alert alertType="warning" alertMessage="This is warning alert" className="mb-2"></app-alert>
+        <app-alert alertType="danger" alertMessage="This is danger alert" className="mb-2"></app-alert>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <p>{{courseName()}}</p>
+    </div>
+    <div class="col-3">
+        {{studentObj() | json}}
+    </div>
+    <div class="col-3">
+        <input type="text" #cityNameText class="form-control" [(ngModel)]="cityName">
+        <button class="btn btn-primary" (click)="addCity()">Add city</button>
+        {{cityList()}}
+    </div>
+    <div class="col-3">
+        <select type="text" class="form-select">
+            <option>Pune</option>
+            <option>Mumbai</option>
+            <option>Thane</option>
+            <option>Nagpur</option>
+            <option>Panvel</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <input type="text" class="form-control" value="">
+    </div>
+</div>
+
+<div class="row pt-2">
+    <div class="col-4">
+        <button class="btn btn-primary" (click)="changeCourseName()">Change Course Name</button>
+    </div>
+    <div class="col-4">
+        <button class="btn btn-primary" (click)="changeArray()">Change Array</button>
+    </div>
+</div>
+<hr>
+<div class="row pt-2">
+    <div class="col-6">
+        <div class="col-4">
+            <label>Emp Id</label>
+            <input type="text" class="form-control" (input)="onChangeFormValue('empId', $event)">
+        </div>
+        <div class="col-4">
+            <label>Emp Name</label>
+            <input type="text" class="form-control" (input)="onChangeFormValue('empName', $event)">
+        </div>
+        <div class="col-4">
+            <label>Emp City</label>
+            <input type="text" class="form-control" (input)="onChangeFormValue('empCity', $event)">
+        </div>
+        <div class="col-4">
+            <label>Emp Pincode</label>
+            <input type="text" class="form-control" (input)="onChangeFormValue('empPinCode', $event)">
+        </div>
+        <div class="col-4">
+            <label>Emp State</label>
+            <input type="text" class="form-control" (input)="onChangeFormValue('empState', $event)">
+        </div>
+    </div>
+    {{employeeObj() | json}}
+</div>
+<hr>
+<div class="row">
+    <div class="col-6">
+        <div class="row">
+            <div class="col-4">
+                <label>First Name</label>
+                <input type="text" class="form-control" (input)="updateFName($event)">
+            </div>
+            <div class="col-4">
+                <label>Middle Name</label>
+                <input type="text" class="form-control" (input)="updateMName($event)">
+            </div>
+            <div class="col-4">
+                <label>Last Name</label>
+                <input type="text" class="form-control" (input)="updateLName($event)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <label>Full Name</label>
+                <input type="text" class="form-control" [value]="fullName()">
+            </div>
+        </div>
+    </div>
+</div>
