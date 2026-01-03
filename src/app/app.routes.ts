@@ -7,6 +7,7 @@ import { Layout } from './components/layout/layout';
 import { Login } from './components/login/login/login';
 import { NotFound } from './components/not-found/not-found';
 import { Photos } from './components/photos/photos';
+import { RxjsDemo } from './components/rxjs-demo/rxjs-demo';
 import { SignalInDepth } from './components/signal-in-depth/signal-in-depth';
 import { Signal } from './components/signal/signal';
 import { Todo } from './components/todo/todo';
@@ -64,6 +65,11 @@ export const routes: Routes = [
             {
                 path: "signal-indepth",
                 component: SignalInDepth,
+                canActivate: [authGuard]
+            },
+            {
+                path: "rxjs-demo",
+                component: RxjsDemo,
                 canActivate: [authGuard]
             },
         ]
