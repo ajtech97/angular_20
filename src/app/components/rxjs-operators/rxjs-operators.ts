@@ -69,10 +69,10 @@ export class RxjsOperators {
     //   console.log(data)
     // })
 
-    this.timeInterval.pipe(
-      take(6)
-    ).subscribe((data) => {
-      console.log(data)
-    })
+    // this.timeInterval.pipe(
+    //   take(6)
+    // ).subscribe((data) => {
+    //   console.log(data)
+    // })
   }
 }
