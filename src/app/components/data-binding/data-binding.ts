@@ -36,6 +36,8 @@ export class DataBinding {
     }
   }
 
+  userId: number = 0
+
   userService = inject(UserService)
 
   constructor() {
@@ -49,10 +51,10 @@ export class DataBinding {
     }, 5000)
 
     this.userService.$roleBhehavior.subscribe((res: string) => {
-      debugger
+      // debugger
     })
     this.userService.$roleSubject.subscribe((res: string) => {
-      debugger
+      // debugger
     })
   }
 
@@ -62,6 +64,12 @@ export class DataBinding {
 
   cityChange() {
     alert("city changed")
+  }
+
+  getUser() {
+    this.userService.getUserById(this.userId).subscribe((data: any) => {
+      console.log(data)
+    })
   }
 
 }

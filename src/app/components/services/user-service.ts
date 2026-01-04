@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, map, Subject, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, shareReplay, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +11,8 @@ export class UserService {
 
   $roleBhehavior = new BehaviorSubject<string>("")
   $roleSubject = new Subject<string>()
+
+  private userDetails = new Map<number, Observable<any>>()
 
   http = inject(HttpClient)
 
@@ -40,6 +42,20 @@ export class UserService {
     return this.http.get("https://jsonplaceholder.typicode.com/users/2").pipe(
       map((data: any) => data.address)
     )
+  }
+
+  getUserById(id: number): any | undefined {
+
+    if (!this.userDetails.has(id)) {
+      const userData = this.http.get("https://jsonplaceholder.typicode.com/users/" + id).pipe(
+        shareReplay({
+          bufferSize: 1,
+          refCount: true
+        })
+      )
+      this.userDetails.set(id, userData)
+    }
+    return this.userDetails.get(id)
   }
 
 }
