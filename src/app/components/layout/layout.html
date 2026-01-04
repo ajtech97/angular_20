@@ -36,10 +36,20 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" routerLink="/rxjs-operators">RxJS Operators</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/rxjs-sub-beh-replay">RxJS Sub Beh
+                        Replay</a>
+                </li>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="text" placeholder="Search">
                 <button class="btn btn-primary" type="button">Search</button>
+
+                <select (change)="onRoleChange($event)">
+                    <option value="Guest">Guest</option>
+                    <option value="Admin">Admin</option>
+                    <option value="SuperAdmin">Super Admin</option>
+                </select>
             </form>
         </div>
     </div>

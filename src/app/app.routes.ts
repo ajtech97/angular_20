@@ -11,6 +11,7 @@ import { RxjsDemo } from './components/rxjs-demo/rxjs-demo';
 import { RxjsOperators } from './components/rxjs-operators/rxjs-operators';
 import { SignalInDepth } from './components/signal-in-depth/signal-in-depth';
 import { Signal } from './components/signal/signal';
+import { SubBehReplay } from './components/sub-beh-replay/sub-beh-replay';
 import { Todo } from './components/todo/todo';
 import { User } from './components/user/user';
 
@@ -76,6 +77,11 @@ export const routes: Routes = [
             {
                 path: "rxjs-operators",
                 component: RxjsOperators,
+                canActivate: [authGuard]
+            },
+            {
+                path: "rxjs-sub-beh-replay",
+                component: SubBehReplay,
                 canActivate: [authGuard]
             },
         ]

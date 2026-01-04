@@ -1,7 +1,8 @@
 import { DatePipe, JsonPipe, LowerCasePipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NaPipe } from '../pipes/na-pipe';
+import { UserService } from '../services/user-service';
 
 @Component({
   selector: 'app-data-binding',
@@ -35,6 +36,8 @@ export class DataBinding {
     }
   }
 
+  userService = inject(UserService)
+
   constructor() {
     console.log(this.courseName)
 
@@ -44,6 +47,13 @@ export class DataBinding {
     setTimeout(() => {
       this.rollNumber = 777
     }, 5000)
+
+    this.userService.$roleBhehavior.subscribe((res: string) => {
+      debugger
+    })
+    this.userService.$roleSubject.subscribe((res: string) => {
+      debugger
+    })
   }
 
   showAlert() {

@@ -1,15 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Subject, tap } from 'rxjs';
+import { BehaviorSubject, map, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
 
+  $courseDuration: BehaviorSubject<string> = new BehaviorSubject<string>("2 Months")
+
+  $roleBhehavior = new BehaviorSubject<string>("")
+  $roleSubject = new Subject<string>()
+
   http = inject(HttpClient)
 
-  user$: Subject<any> = new Subject()
+  user$: Subject<any> = new Subject<any>()
 
   sumOfTwoNumbers(num1: number, num2: number) {
     return num1 + num2
