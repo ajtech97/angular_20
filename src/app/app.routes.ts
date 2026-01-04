@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Attribute } from './attribute/attribute';
+import { Attribute } from './components/attribute/attribute';
 import { ControlFlow } from './components/control-flow/control-flow';
 import { DataBinding } from './components/data-binding/data-binding';
 import { authGuard } from './components/gaurd/auth-guard';
@@ -8,6 +8,7 @@ import { Login } from './components/login/login/login';
 import { NotFound } from './components/not-found/not-found';
 import { Photos } from './components/photos/photos';
 import { RxjsDemo } from './components/rxjs-demo/rxjs-demo';
+import { RxjsOperators } from './components/rxjs-operators/rxjs-operators';
 import { SignalInDepth } from './components/signal-in-depth/signal-in-depth';
 import { Signal } from './components/signal/signal';
 import { Todo } from './components/todo/todo';
@@ -70,6 +71,11 @@ export const routes: Routes = [
             {
                 path: "rxjs-demo",
                 component: RxjsDemo,
+                canActivate: [authGuard]
+            },
+            {
+                path: "rxjs-operators",
+                component: RxjsOperators,
                 canActivate: [authGuard]
             },
         ]

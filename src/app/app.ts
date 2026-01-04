@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { Attribute } from './attribute/attribute';
 import { Admin } from './components/admin/admin';
+import { Attribute } from './components/attribute/attribute';
 import { ControlFlow } from './components/control-flow/control-flow';
 import { DataBinding } from './components/data-binding/data-binding';
 import { Photos } from './components/photos/photos';
