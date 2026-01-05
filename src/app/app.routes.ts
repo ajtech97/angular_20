@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { Attribute } from './components/attribute/attribute';
+import { CombineObs } from './components/combine-obs/combine-obs';
 import { ControlFlow } from './components/control-flow/control-flow';
 import { DataBinding } from './components/data-binding/data-binding';
 import { authGuard } from './components/gaurd/auth-guard';
@@ -82,6 +83,11 @@ export const routes: Routes = [
             {
                 path: "rxjs-sub-beh-replay",
                 component: SubBehReplay,
+                canActivate: [authGuard]
+            },
+            {
+                path: "combine-obs",
+                component: CombineObs,
                 canActivate: [authGuard]
             },
         ]
