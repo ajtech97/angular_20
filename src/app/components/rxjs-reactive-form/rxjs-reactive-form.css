@@ -1,0 +1,48 @@
+   .form-card {
+       max-width: 820px;
+       margin: 2rem auto;
+       border-radius: 12px;
+       overflow: hidden;
+       box-shadow: 0 12px 40px rgba(2, 6, 23, 0.08);
+   }
+
+   .form-side {
+       background: linear-gradient(180deg, #eef2ff 0%, #f8f9ff 100%);
+       padding: 2.2rem;
+   }
+
+   .form-main {
+       padding: 2.2rem;
+       background: #ffffff;
+   }
+
+   .anim-fade {
+       animation: fadeInUp .45s ease both;
+   }
+
+   .input-focus:focus {
+       box-shadow: 0 6px 20px rgba(99, 102, 241, 0.12);
+       border-color: #6366f1;
+   }
+
+   .small-muted {
+       color: #6b7280;
+   }
+
+   @keyframes fadeInUp {
+       from {
+           opacity: 0;
+           transform: translateY(10px);
+       }
+
+       to {
+           opacity: 1;
+           transform: none;
+       }
+   }
+
+   @media (max-width:767.98px) {
+       .form-side {
+           display: none;
+       }
+   }

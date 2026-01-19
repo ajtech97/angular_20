@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { Routes } from '@angular/router';
 import { Attribute } from './components/attribute/attribute';
 import { CombineObs } from './components/combine-obs/combine-obs';
@@ -10,10 +11,12 @@ import { NotFound } from './components/not-found/not-found';
 import { Photos } from './components/photos/photos';
 import { RxjsDemo } from './components/rxjs-demo/rxjs-demo';
 import { RxjsOperators } from './components/rxjs-operators/rxjs-operators';
+import { RxjsReactiveForm } from './components/rxjs-reactive-form/rxjs-reactive-form';
 import { SignalInDepth } from './components/signal-in-depth/signal-in-depth';
 import { Signal } from './components/signal/signal';
 import { SubBehReplay } from './components/sub-beh-replay/sub-beh-replay';
 import { Todo } from './components/todo/todo';
+import { Unsubscribe } from './components/unsubscribe/unsubscribe';
 import { User } from './components/user/user';
 
 export const routes: Routes = [
@@ -88,6 +91,16 @@ export const routes: Routes = [
             {
                 path: "combine-obs",
                 component: CombineObs,
+                canActivate: [authGuard]
+            },
+            {
+                path: "reactiveform-rxjs",
+                component: RxjsReactiveForm,
+                canActivate: [authGuard]
+            },
+            {
+                path: "reactiveform-unsubscribe",
+                component: Unsubscribe,
                 canActivate: [authGuard]
             },
         ]

@@ -1,0 +1,94 @@
+<section class="anim-fade">
+    <div class="card form-card">
+        <div class="row g-0">
+            <div class="col-md-12 form-main">
+                <div class="col-md-6">
+                    <label for="search" class="form-label">Search</label>
+                    <input [formControl]="searchControl" id="search" type="search" class="form-control input-focus"
+                        placeholder="Search...">
+                </div>
+                <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="name" class="form-label">Name</label>
+                            <input formControlName="name" id="name" class="form-control input-focus" type="text"
+                                placeholder="Full name">
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input formControlName="subscriber" class="form-check-input" type="checkbox"
+                                    id="subscribe">
+                                <label class="form-check-label" for="subscribe">Subscribe to newsletter</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input formControlName="email" id="email" type="email" class="form-control input-focus"
+                                placeholder="you@example.com">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="password" class="form-label">Password</label>
+                            <input formControlName="password" id="password" type="password"
+                                class="form-control input-focus" placeholder="Password">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="confirm" class="form-label">Confirm Password</label>
+                            <input formControlName="confirmPassword" id="confirm" type="password"
+                                class="form-control input-focus" placeholder="Confirm password">
+                            @if(passwordMissmatch){
+                            <p>password did not match</p>
+                            }
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="age" class="form-label">Age</label>
+                            <input formControlName="age" id="age" type="number" min="0" class="form-control input-focus"
+                                placeholder="e.g. 29">
+                        </div>
+
+                        <div class="col-md-8">
+                            <label for="driving" class="form-label">Driving Licence</label>
+                            <input formControlName="drivingLicense" id="driving" type="text"
+                                class="form-control input-focus" placeholder="License number">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="country" class="form-label">Country</label>
+                            <select id="country" class="form-select input-focus" formControlName="country">
+                                <option selected>United States</option>
+                                <option>United Kingdom</option>
+                                <option>Canada</option>
+                                <option>Australia</option>
+                                <option>India</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="currency" class="form-label">Currency</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input formControlName="currency" id="currency" type="text"
+                                    class="form-control input-focus" placeholder="USD">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <label for="search" class="form-label">Search</label>
+                            <input formControlName="search" id="search" type="search" class="form-control input-focus"
+                                placeholder="Search...">
+                        </div>
+
+                        <div class="col-12 text-end">
+                            <button type="button" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
