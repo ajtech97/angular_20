@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { Attribute } from './components/attribute/attribute';
 import { CombineObs } from './components/combine-obs/combine-obs';
 import { ControlFlow } from './components/control-flow/control-flow';
+import { Css } from './components/css/css';
 import { DataBinding } from './components/data-binding/data-binding';
 import { authGuard } from './components/gaurd/auth-guard';
 import { Layout } from './components/layout/layout';
@@ -101,6 +102,11 @@ export const routes: Routes = [
             {
                 path: "reactiveform-unsubscribe",
                 component: Unsubscribe,
+                canActivate: [authGuard]
+            },
+            {
+                path: "css",
+                component: Css,
                 canActivate: [authGuard]
             },
         ]

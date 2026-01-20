@@ -1,0 +1,39 @@
+div {
+    position: static;
+}
+
+.box {
+    position: relative;
+    top: 10px;
+    left: 20px;
+}
+
+.parent {
+    position: relative;
+    border: solid 1px;
+}
+
+.child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: solid 1px;
+}
+
+header {
+    position: fixed;
+    top: 20px;
+    width: 100%;
+    border: solid;
+    background-color: blue;
+}
+
+table tr {
+    height: 100px;
+}
+
+table tr th {
+    position: sticky;
+    top: 0px;
+    background-color: brown;
+}
