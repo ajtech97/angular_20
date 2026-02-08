@@ -92,3 +92,50 @@
         </div>
     </div>
 </section>
+
+
+<div class="row">
+    <div class="col-6">
+        <label>State</label>
+        <select class="form-select" (change)="onStateChange()" [(ngModel)]="selectedStateId">
+            <option value="">Select state</option>
+            @for (item of stateList(); track $index){
+            <option [value]="item.stateId">{{item.stateName}}</option>
+            }
+        </select>
+
+        <label>City</label>
+        <select class="form-select">
+            <option value="">Select city</option>
+            @for (item of filteredCity(); track $index){
+            <option [value]="item.cityId">{{item.cityName}}</option>
+            }
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <label>Department</label>
+        <select class="form-select" (change)="onDesignationByDeptChange($event)">
+            <option value="">Select department</option>
+            @for (item of deptList(); track $index){
+            <option [value]="item.departmentId">{{item.departmentName}}</option>
+            }
+        </select>
+
+        <label>City</label>
+        <select class="form-select">
+            <option value="">Select designation</option>
+            @for (item of designationList(); track $index){
+            <option [value]="item.designationId">{{item.designationName}}</option>
+            }
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <input type="file" (change)="uploadFile($event)">
+    </div>
+</div>

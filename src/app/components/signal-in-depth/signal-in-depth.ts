@@ -13,6 +13,17 @@ import { Alert } from "../reusableComponent/alert/alert";
 })
 export class SignalInDepth {
 
+  count1 = signal(0)
+
+  items = signal([
+    "Angular",
+    "javascript",
+    "Python",
+    "Java"
+  ])
+
+  searchText = signal("")
+
   courseName = signal("Angular")
 
   courseDuration = signal<string>("2 Months")
@@ -57,6 +68,13 @@ export class SignalInDepth {
     console.log("User List: ", userList())
   }
 
+  increment() {
+    this.count1.set(this.count1() + 1)
+  }
+  decrement() {
+    this.count1.set(this.count1() - 1)
+  }
+
   updateFName(event: any) {
     this.fName.set(event.target.value)
   }
@@ -86,5 +104,18 @@ export class SignalInDepth {
     const value = event.target.value
     this.employeeObj.update(emp => ({ ...emp, [keyName]: value }))
 
+  }
+
+  filteredItems = computed(() => {
+    const query = this.searchText().toLowerCase();
+    return this.items().filter(item =>
+      item.toLowerCase().includes(query)
+    );
+  });
+
+
+  onSearch(value: string) {
+    console.log(value)
+    this.searchText.set(value)
   }
 }

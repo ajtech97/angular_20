@@ -6,6 +6,15 @@
     </div>
 </div>
 <div class="row">
+
+    <div class="row">
+        ------------------------------------{{ count1() }}
+        <div class="col-6">
+            <button class="btn btn-primary" (click)="increment()">+</button>
+            <button class="btn btn-primary" (click)="decrement()">-</button>
+        </div>
+    </div>
+
     <div class="col-3">
         <p>{{courseName()}}</p>
     </div>
@@ -89,4 +98,19 @@
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="row">
+    <div class="col-6">
+        <input type="text" placeholder="search" (input)="onSearch($event.target.value)">
+    </div>
+
+    <ul>
+        @for (item of filteredItems(); track $index) {
+        <li>
+            {{item}}
+        </li>
+        }
+    </ul>
 </div>
