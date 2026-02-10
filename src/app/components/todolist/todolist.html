@@ -1,0 +1,130 @@
+<input type="text" placeholder="Task" [(ngModel)]="newTask">
+<button (click)="addTodo()">Add task</button>
+
+<ul>
+    @for (item of todos; track $index) {
+    <li>
+        {{item}}
+        <button (click)="removeTodo($index)">Remove</button>
+    </li>
+    }
+
+</ul>
+
+
+<!-- <h2>Todo List (Normal)</h2>
+
+<input [(ngModel)]="newTask" placeholder="Enter task">
+<button (click)="addTodo()">Add</button>
+
+<br><br>
+
+<button (click)="filterType='all'">All</button>
+<button (click)="filterType='completed'">Completed</button>
+<button (click)="filterType='pending'">Pending</button>
+
+<ul>
+    @for(todo of getFilteredTodos(); track $index){
+    <li>
+
+        <input type="checkbox" (change)="toggleStatus(todo)" [checked]="todo.completed">
+
+        <span [style.textDecoration]="todo.completed ? 'line-through' : 'none'">
+            {{todo.task}}
+        </span>
+
+        <button (click)="removeTodo($index)">Delete</button>
+    </li>
+    }
+</ul> -->
+
+
+<hr>
+
+<button (click)="onIncrement()">+</button>
+{{count()}}
+<button (click)="onDecrement()">-</button>
+
+<hr>
+
+<!-- <input [(ngModel)]="searchText" (input)="searchUser()" placeholder="Search by name" /> -->
+<!-- <input [(ngModel)]="searchText" placeholder="Search by name" /> -->
+<input [(ngModel)]="searchText" (input)="onSearchChange()" placeholder="Search user">
+<table border="1" width="100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <!-- @for (user of users; track $index) {
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+        </tr>
+        } -->
+
+        @for (user of filteredUsers | search: searchText; track $index) {
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+        </tr>
+        }
+
+
+    </tbody>
+</table>
+
+<hr>
+
+
+<h2>Angular Material Table</h2>
+
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search">
+</mat-form-field>
+
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<mat-paginator [pageSize]="5"></mat-paginator>
+
+<hr>
+
+<h2>Infinite Scroll</h2>
+
+@for (item of visibleData; track $index) {
+<div>
+    Item {{item}}
+</div>
+}

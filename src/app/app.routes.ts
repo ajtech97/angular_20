@@ -17,6 +17,7 @@ import { SignalInDepth } from './components/signal-in-depth/signal-in-depth';
 import { Signal } from './components/signal/signal';
 import { SubBehReplay } from './components/sub-beh-replay/sub-beh-replay';
 import { Todo } from './components/todo/todo';
+import { Todolist } from './components/todolist/todolist';
 import { Unsubscribe } from './components/unsubscribe/unsubscribe';
 import { User } from './components/user/user';
 
@@ -107,6 +108,11 @@ export const routes: Routes = [
             {
                 path: "css",
                 component: Css,
+                canActivate: [authGuard]
+            },
+            {
+                path: "todolist",
+                component: Todolist,
                 canActivate: [authGuard]
             },
         ]
