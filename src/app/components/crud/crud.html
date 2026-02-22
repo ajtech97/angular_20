@@ -1,0 +1,40 @@
+<div class="container">
+    <h2>CRUD</h2>
+</div>
+
+<input type="text" placeholder="search" (input)="onSearch($event.target.value)">
+
+<div class="form">
+    <input type="text" placeholder="Name" [(ngModel)]="form.name">
+    <input type="text" placeholder="Email" [(ngModel)]="form.email">
+
+    <button (click)="save()">
+        {{ editingId ? 'Update' : 'Add' }}
+    </button>
+
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <!-- *ngFor="let user of (filteredUsers$ | async) ?? [] -->
+        @for (user of filteredUsers$ | async; track $index) {
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <button (click)="edit(user)">Edit</button>
+                <button (click)="delete(user.id)">Delete</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

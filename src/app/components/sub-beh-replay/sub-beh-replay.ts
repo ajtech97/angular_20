@@ -24,10 +24,10 @@ export class SubBehReplay implements OnInit {
   constructor() {
     setTimeout(() => {
       this.studentName$.next("Angular 20")
-      this.rollNo$.next(123)
-      this.takeTill$.next()
-      this.courseName$.next(["Aj", "Ab"])
-      this.userService.$courseDuration.next("1 Month")
+      // this.rollNo$.next(123)
+      // this.takeTill$.next()
+      // this.courseName$.next(["Aj", "Ab"])
+      // this.userService.$courseDuration.next("1 Month")
     }, 4000)
   }
 
@@ -36,17 +36,17 @@ export class SubBehReplay implements OnInit {
       console.log(data)
     })
 
-    this.rollNo$.subscribe((data) => {
-      console.log(data)
-    })
+    // this.rollNo$.subscribe((data) => {
+    //   console.log(data)
+    // })
 
-    this.courseName$.subscribe((data) => {
-      console.log(data)
-    })
+    // this.courseName$.subscribe((data) => {
+    //   console.log(data)
+    // })
 
-    this.userService.$courseDuration.subscribe((res: string) => {
-      debugger
-    })
+    // this.userService.$courseDuration.subscribe((res: string) => {
+    //   debugger
+    // })
 
   }
 

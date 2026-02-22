@@ -1,0 +1,37 @@
+.container {
+    width: 700px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+input {
+    padding: 6px;
+    margin: 5px;
+}
+
+button {
+    padding: 6px 10px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background: #f5f5f5;
+}
+
+.form {
+    margin-top: 10px;
+}

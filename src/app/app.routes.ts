@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { Attribute } from './components/attribute/attribute';
 import { CombineObs } from './components/combine-obs/combine-obs';
 import { ControlFlow } from './components/control-flow/control-flow';
+import { Crud } from './components/crud/crud';
 import { Css } from './components/css/css';
 import { DataBinding } from './components/data-binding/data-binding';
 import { authGuard } from './components/gaurd/auth-guard';
@@ -113,6 +114,11 @@ export const routes: Routes = [
             {
                 path: "todolist",
                 component: Todolist,
+                canActivate: [authGuard]
+            },
+            {
+                path: "crud",
+                component: Crud,
                 canActivate: [authGuard]
             },
         ]
