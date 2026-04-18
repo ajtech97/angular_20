@@ -4,6 +4,8 @@ import { Attribute } from './components/attribute/attribute';
 import { CombineObs } from './components/combine-obs/combine-obs';
 import { ControlFlow } from './components/control-flow/control-flow';
 import { Crud } from './components/crud/crud';
+import { ModalPopup } from './components/crud/modal-popup/modal-popup';
+import { SidePanel } from './components/crud/side-panel/side-panel';
 import { Css } from './components/css/css';
 import { DataBinding } from './components/data-binding/data-binding';
 import { authGuard } from './components/gaurd/auth-guard';
@@ -121,6 +123,17 @@ export const routes: Routes = [
                 component: Crud,
                 canActivate: [authGuard]
             },
+            {
+                path: "modalpopup",
+                component: ModalPopup,
+                canActivate: [authGuard]
+            },
+            {
+                path: "sidepanel",
+                component: SidePanel,
+                canActivate: [authGuard]
+            },
+
         ]
     },
     {

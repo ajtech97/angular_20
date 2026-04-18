@@ -1,0 +1,81 @@
+<p>side-panel works!</p>
+<div class="container-fluid py-3">
+    <div class="row gx-4">
+        @if(isSidePanelOpen()){
+        <aside class="col-12 col-md-4 col-xl-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Side Panel</h5>
+                    <button type="button" class="btn-close btn-close-white" aria-label="Close"
+                        (click)="closeSidePanel()"></button>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-3">Selected user details</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="srNo" class="form-label">Sr No</label>
+                            <input type="number" class="form-control" id="srNo" value="1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" value="Jane Doe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">User Name</label>
+                            <input type="text" class="form-control" id="username" value="jdoe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" value="jane.doe@example.com">
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-outline-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </aside>
+        }
+        <main [ngClass]="isSidePanelOpen() === true ? 'col-12 col-md-8 col-xl-9' : 'col-12 col-md-12 col-xl-12'">
+            <div class="card shadow-sm">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">User Table</h5>
+                    <button (click)="openSidePanel()" class="btn btn-primary">Add New</button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">Sr No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Jane Doe</td>
+                                <td>jdoe</td>
+                                <td>jane.doe@example.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>John Smith</td>
+                                <td>jsmith</td>
+                                <td>john.smith@example.com</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Mary Johnson</td>
+                                <td>mjohnson</td>
+                                <td>mary.johnson@example.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+    </div>
+</div>
