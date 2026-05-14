@@ -6,7 +6,7 @@
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" routerLink="/controlflow">Control FLow</a>
 
                 </li>
@@ -15,7 +15,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" routerLink="/signal">Signal</a>
+                </li> -->
+                @for (item of rolewiseMenuItems; track $index) {
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="item.routerName" routerLinkActive="active">
+                        {{ item.title }}
+                    </a>
                 </li>
+                }
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" routerLink="/attribute">Attribute</a>
                 </li>

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { GlobalConstants } from '../../constant/global.constant';
 import { UserService } from '../services/user-service';
 
 @Component({
@@ -11,6 +12,14 @@ import { UserService } from '../services/user-service';
 export class Layout {
 
   userService = inject(UserService)
+
+  menuItems: any[] = GlobalConstants.MENU_ITEMS
+  rolewiseMenuItems: any[] = []
+  loggedInUserRole: string = "admin"
+
+  ngOnInit() {
+    this.rolewiseMenuItems = this.menuItems.filter(item => item.allowedRoles.includes(this.loggedInUserRole))
+  }
 
   onRoleChange(event: any) {
     debugger
