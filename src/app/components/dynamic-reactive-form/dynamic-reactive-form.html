@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-success">
+                Form
+            </div>
+            <div class="card-body">
+                <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+                    <!-- Form fields will be dynamically generated here -->
+                    @for (item of formFields; track $index) {
+                    <div class="col-6 mb-3">
+                        @switch (item.type) {
+                        @case ('input') {
+                        <label [for]="item.name" class="form-label">{{item.label}}</label>
+                        <input type="text" class="form-control" [id]="item.name" [formControlName]="item.name">
+                        }
+                        @case ('select') {
+                        <label [for]="item.name" class="form-label">{{item.label}}</label>
+                        <select class="form-select" [id]="item.name" [formControlName]="item.name">
+                            <option value="">Select {{item.label}}</option>
+                            @for (option of item.options; track $index) {
+                            <option [value]="option.value">{{option.label}}</option>
+                            }
+                        </select>
+                        }
+                        @case ('textarea') {
+                        <label [for]="item.name" class="form-label">{{item.label}}</label>
+                        <textarea class="form-control" [id]="item.name" [formControlName]="item.name"></textarea>
+                        }
+                        @case ('checkbox') {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" [id]="item.name"
+                                [formControlName]="item.name">
+                            <label class="form-check-label" [for]="item.name">{{item.label}}</label>
+                        </div>
+                        }
+                        @case ('radio') {
+                        <label class="form-label">{{item.label}}</label>
+                        @for (option of item.options; track $index) {
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" [id]="item.name + '_' + option.value"
+                                [formControlName]="item.name" [value]="option.value">
+                            <label class="form-check-label"
+                                [for]="item.name + '_' + option.value">{{option.label}}</label>
+                        </div>
+                        }
+                        }
+                        @case ('date') {
+                        <label [for]="item.name" class="form-label">{{item.label}}</label>
+                        <input type="date" class="form-control" [id]="item.name" [formControlName]="item.name">
+                        }
+                        }
+
+                        @if (studentForm.controls[item.name].invalid && (studentForm.controls[item.name].touched ||
+                        studentForm.controls[item.name].dirty || isFormSubmitted)) {
+                        <div class="text-danger">
+                            @switch (true) {
+                            @case (studentForm.controls[item.name].hasError('required')) {
+                            <span>{{item.label}} is required</span>
+                            }
+                            @case (studentForm.controls[item.name].hasError('minlength')) {
+                            <span>Minimum {{studentForm.controls[item.name].errors?.['minlength'].requiredLength}}
+                                characters required</span>
+                            }
+                            @case (studentForm.controls[item.name].hasError('maxlength')) {
+                            <span>Maximum {{studentForm.controls[item.name].errors?.['maxlength'].requiredLength}}
+                                characters allowed</span>
+                            }
+                            }
+                        </div>
+                        }
+
+                    </div>
+                    }
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

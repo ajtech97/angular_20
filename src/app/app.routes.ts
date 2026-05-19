@@ -8,6 +8,7 @@ import { ModalPopup } from './components/crud/modal-popup/modal-popup';
 import { SidePanel } from './components/crud/side-panel/side-panel';
 import { Css } from './components/css/css';
 import { DataBinding } from './components/data-binding/data-binding';
+import { DynamicReactiveForm } from './components/dynamic-reactive-form/dynamic-reactive-form';
 import { authGuard } from './components/gaurd/auth-guard';
 import { Layout } from './components/layout/layout';
 import { Login } from './components/login/login/login';
@@ -133,7 +134,11 @@ export const routes: Routes = [
                 component: SidePanel,
                 canActivate: [authGuard]
             },
-
+            {
+                path: "dynamicform",
+                component: DynamicReactiveForm,
+                canActivate: [authGuard]
+            },
         ]
     },
     {
